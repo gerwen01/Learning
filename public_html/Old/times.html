@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            var greeting;
+            
+            var nowDate = new Date();
+            var nowHour = nowDate.getHours();
+            var nowMinute = nowDate.getMinutes();
+            var nowSecond = nowDate.getSecondds();
+            var nowStrDate = nowDate.toTimeString();
+            
+            if (nowMinute < 10) {
+                nowMinute = "0" + nowMinute; 
+            }
+            
+            if (nowSecond < 10) {
+                nowSecond = "0" + nowSecond;
+            }
+            
+            if (nowHour < 12) {
+                greeting = "Good Morning";
+            } else if (nowHour < 17) {
+                greeting = "Good Afternoon";
+            } else {
+                greeting = "Good Evening";
+            }
+            
+            document.write("<h4>" + greeting + " and welcome to my website</h4>");
+            document.write("According to your clock the time is ");
+            document.write(nowHour + ":" + nowMinute + ":" + nowSecond);
+        </script>
+    </body>
+</html>

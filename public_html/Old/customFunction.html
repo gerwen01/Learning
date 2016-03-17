@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            function createPerson(firstName, lastName) {
+                return {
+                    firstName: firstName,
+                    lastName: lastName,
+                    getFullName: function() {
+                        return this.firstName + " " + this.lastName;
+                    },
+                    greet: function(person) {
+                        alert("Hello, " + person.getFullName() +
+                                ". I'm " + this.getFullName());
+                    }
+                };           
+            }
+            var johnDoe = createPerson("John", "Doe");
+            var janeDoe = createPerson("Jane", "Doe");
+            
+            johnDoe.greet(janeDoe);
+        </script>
+    </body>
+</html>

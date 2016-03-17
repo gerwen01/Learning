@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            var friends = {
+                bill: {
+                    firstName: "Bill",
+                    lastName: "Humpty",
+                    number: "226-448-4411",
+                    address: ['One Microsoft Way', 'Redmond', 'WA', 'N5P3R9']
+                },
+                steve: {    
+                    firstName: "Steve",
+                    lastName: "Rand",
+                    number: "226-446-4321",
+                    address: ["13 Smith St", "Aylmer", "ON", "N5L3R3"]
+                },
+                andrew: {
+                    firstName: "Andrew",
+                    lastName: "Holmes",
+                    number: "226-123-2342",
+                    address: ["23 Rosebery Ave", "St. Thomas", "ON", "N5P3R9"]
+                },
+                rob: {
+                    firstName: "Rob",
+                    lastName: "Renaud",
+                    number: "226-433-2343",
+                    address: ["41 Erie St", "St. Thomas", "ON", "N5R3R9"]
+                }
+            };
+
+    function list(parm) {
+        for (var key in friends) {
+            console.log(friends[key]);
+        }
+    }
+    </script>
+    </body>
+</html>

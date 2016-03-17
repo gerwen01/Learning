@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Iterative</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            var numbers = [1, 2, 3, 4, 5, 3, 1, 7, 3, 2];
+            
+            function isLessThan3(value, index, array) {
+                var returnValue = false;
+                
+                if (value < 3) {
+                    returnValue = true;
+                    
+                }
+                
+                return returnValue;
+            }
+            
+            document.write(numbers + "<br>");
+            numbers.sort();
+            
+            if (numbers.some(isLessThan3)) {
+                var result = numbers.filter(isLessThan3);
+            document.write(numbers + "<br>");       
+            document.write("These numbers are less than 3: " + result + "<br>");
+            }
+            //document.write(numbers.some(isLessThan3));
+            
+            
+        </script>
+    </body>
+</html>
