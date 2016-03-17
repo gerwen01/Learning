@@ -20,5 +20,5 @@ function geoError(errorObj) {
 }
 
 navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-console.log("testing testing");
+
 
