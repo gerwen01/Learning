@@ -19,6 +19,9 @@ function geoError(errorObj) {
     
 }
 
-navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+} else {
+    alert("Geolocation not supported by browser");
+}
 
