@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CH10 Ex:1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <img src="images/usa.gif" onclick="changeImg(this)" alt="whoops" />
+        <br>
+        
+        <img src="images/mexico.gif" onclick="changeImg(this)" alt="whoops" />
+        
+        <script>
+            var myImages = [
+                "usa.gif",
+                "canada.gif",
+                "jamaica.gif",
+                "mexico.gif"];
+            function changeImg(that) {
+                var newImgNumber = Math.round(Math.random() *3);
+                
+                while (that.src.indexOf(myImages[newImgNumber]) != -1) {
+                    newImgNumber = Math.round(Math.random() * 3);
+                }
+                that.src = "images/" + myImages[newImgNumber];
+                
+            }
+            
+        </script>
+        <div>TODO write content</div>
+    </body>
+</html>

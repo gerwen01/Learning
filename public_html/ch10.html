@@ -6,19 +6,20 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Learn to Code</title>
+        <title>Event stuff</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="favicon.ico">
     </head>
     <body>
-       <a href="ch10ex1.html">The Link</a>
-        <br>
-        <div id="output"></div>
-<!--        <img src="" width="200" height=""150" alt="My Image" /> -->
-        <script type="text/javascript" src="chapter8_example5.js"></script>
+        <div>TODO write content</div>
         
-        <br> 
-        <div>The End</div>
+        <a href="index.html" onclick="return linkClick()">going nowhere</a>
+        
+        <script>
+            function linkClick() {
+                alert("You Clicked?");
+                return false;
+            }
+        </script>
     </body>
 </html>
