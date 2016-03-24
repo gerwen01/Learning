@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ch10: Ex8</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .underline {
+                color: red;
+                text-decoration: underline;
+            }
+            .underline1 {
+                color: green;
+                
+            }
+            .underline2 {
+                color: blueviolet;
+                text-decoration: underline;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <p>This is paragraph 1.</p>
+        <p>This is paragraph 2.</p>
+        <p>This is paragraph 3.</p>
+        
+        <script>
+            function handleEvent(e) {
+                var target = e.target;
+                var type = e.type;
+                // var alt = e.altKey
+                
+                if (target.tagName == "P") {
+                    if (type == "mouseover") {
+                        target.className = "underline";
+                    }else if (type == "mouseout") {
+                        target.className = "underline1";
+                    }
+                }
+                
+                if (type == "click") {
+                    if (e.altKey == true) {
+                        target.className = "underline2";
+                    }
+                    alert("You clicked the mouse button at the X:" +
+                            e.screenX + " and Y:" + e.screenY + "coordinates" + e.altKey);
+                    }
+                }
+                
+                
+            } 
+            
+            document.addEventListener("mouseover", handleEvent);
+            document.addEventListener("mouseout", handleEvent);
+            document.addEventListener("click", handleEvent);
+        </script>
+    </body>
+</html>

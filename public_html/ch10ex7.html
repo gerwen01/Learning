@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ch10ex3a</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <img id="img0" src="images/usa.gif" alt="failed to load" />
+        <div id="status")></div>
+        
+        <script>
+            var myImages = [
+                "usa.gif",
+                "canada.gif",
+                "jamaica.gif",
+                "mexico.gif"
+            ];
+            var oldStatus;
+            
+            function changeImg(e) {
+                var el = e.target;
+                var newImgNumber = Math.round(Math.random() * 3);
+                
+                oldStatus = el.src;
+                
+                while (el.src.indexOf(myImages[newImgNumber]) !== -1) {
+                    newImgNumber = Math.round(Math.random() * 3);
+                }
+                
+                el.src = "images/" + myImages[newImgNumber];
+            }
+            
+            function updateStatus(e) {
+                var el = e.target;
+                var status = document.getElementById("status");
+                
+                status.innerHTML = "The image changed from:" + 
+                        oldStatus + "<br>" + "To:" + el.src +
+                        e.bubbles;
+                
+                if (el.src.indexOf("canada") > -1) {
+                    el.removeEventListener("click", changeImg);
+                    el.removeEventListener("click", updateStatus);
+                }
+            }
+            
+            var imgObj = document.getElementById("img0");
+            
+            document.getElementById("img0").addEventListener("click", changeImg);
+            document.getElementById("img0").addEventListener("click", updateStatus);
+            
+        </script>
+    </body>
+</html>
