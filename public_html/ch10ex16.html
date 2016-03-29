@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ch10 Ex16</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            .underline {
+                color: red;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <p>This is paragraph 1.</p>
+        <p>This is paragraph 2.</p>
+        <p>This is paragraph 3.</p>
+        
+        <script src="event-utility.js"></script>
+        <script>
+            function handleEvent(e) {
+                var target = evt.getTarget(e);
+                var type = e.type;
+                
+                if (target.tagName == "P") {
+                    if (type == "mouseover") {
+                        target.className = "underline";
+                    } else if ( type == "mouseout") {
+                        target.className = "";
+                    }
+                }
+                
+                if (type == "click") {
+                    alert("You click the mouse button at the X:" +
+                            e.clientX + "and Y:" + e.clientY + " Coordinates");
+                }
+            }
+            
+            evt.addListener(document, "mouseover", handleEvent);
+            evt.addListener(document, "mouseout", handleEvent);
+            evt.addListener(document, "click", handleEvent);
+            
+        </script>
+    </body>
+</html>
