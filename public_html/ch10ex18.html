@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ch10 ex18</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .drop-zone {
+                width: 300px;
+                padding: 20px;
+                border: 2px dashed #000;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div id="dropZone" class="drop-zone">Drop Zone!</div>
+        <div id="dropStatus"></div>
+        
+        <script>
+            function handleDragEnter(e) {
+                dropStatus.innerHTML = "You're dragging something!";
+            }
+            
+            var dropZone = document.getElementById("dropZone");
+            var dropStatus = document.getElementById("dropStatus");
+            
+            dropZone.addEventListener("dragenter", handleDragEnter);
+            
+        </script>
+    </body>
+</html>
