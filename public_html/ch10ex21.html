@@ -32,14 +32,31 @@ and open the template in the editor.
                 background-color: navy;
             }
             
-            .red 
+            .red {
+                background-color: red;
+            }
         </style>
     </head>
     <body>
-        <div>TODO write more content</div>
+        <div data-drop-target="true">
+            <div id="box1" draggable="true" class="box navy"></div>
+            <div id="box2" draggable="true" class="box red"></div>
+        </div>
+        <div data-drop-target="true"></div>
+            
         
         <script>
-            function() {
+            function handleDragStart(e) {
+                e.dataTransfer.setData("text", this.id);
+            }
+            
+            function handleDragEnterLeave(e) {
+                if (e.type == "dragenter") {
+                    this.className = "drag-enter";
+                } else{
+                    this.className = "";
+                }
+                
             }
             
         </script>
