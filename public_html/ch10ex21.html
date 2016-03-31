@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>Ch10 Ex21</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <style>
             [data-drop-target] {
-                height: 400px;
+                height: 800px;
                 width: 200px;
-                margin: 2px;
+                margin: 0px;
                 background-color: gainsboro;
                 float: left;
-            }
-            
+            }            
             .drag-enter {
                 border: 2px dashed
-            }
-            
+            }            
             .box {
                 width: 200px;
                 height: 200px;
             }
+            .smBox {
+                width: 50px;
+                height: 50px;
+            }
             
             .navy {
                 background-color: navy;
-            }
-            
+            }            
             .red {
                 background-color: red;
+            }
+            .green {
+                background-color: green;
+            }
+            .yellow {
+                background-color: yellow;
             }
         </style>
     </head>
@@ -41,10 +41,18 @@ and open the template in the editor.
         <div data-drop-target="true">
             <div id="box1" draggable="true" class="box navy"></div>
             <div id="box2" draggable="true" class="box red"></div>
+            <div id="box3" draggable="true" class="box green"></div>
+            <div id="box4" draggable="true" class="box yellow"></div>
         </div>
-        <div data-drop-target="true"></div>
-            
-        
+        <div data-drop-target="true" >
+            <div id="box1" draggable="true" class="smBox navy"></div>
+            <div id="box2" draggable="true" class="smBox red"></div>
+            <div id="box3" draggable="true" class="smBox green"></div>
+            <div id="box4" draggable="true" class="smBox yellow"></div>
+        </div>
+        <div data-drop-target="true" ></div>
+        <div data-drop-target="true" ></div>
+                    
         <script>
             function handleDragStart(e) {
                 e.dataTransfer.setData("text", this.id);
@@ -55,10 +63,42 @@ and open the template in the editor.
                     this.className = "drag-enter";
                 } else{
                     this.className = "";
-                }
-                
+                }               
             }
             
+            function handleOverDrop(e) {
+                e.preventDefault();
+                
+                if (e.type != "drop") {
+                    return;
+                }
+                
+                var draggedId = e.dataTransfer.getData("text");
+                var draggedEl = document.getElementById(draggedId);
+                
+                //if (draggedEl.parentNode == this) {
+                //    return;
+                //}
+                
+                draggedEl.parentNode.removeChild(draggedEl);
+                
+                this.appendChild(draggedEl);
+                this.className = "";
+            }
+            
+            var draggable = document.querySelectorAll("[draggable]");
+            var targets = document.querySelectorAll("[data-drop-target]");
+            
+            for (var i = 0; i < draggable.length; i++) {
+                draggable[i].addEventListener("dragstart", handleDragStart);
+            }
+            
+            for (i = 0; i < targets.length; i++) {
+                targets[i].addEventListener("dragover", handleOverDrop);
+                targets[i].addEventListener("drop", handleOverDrop);
+                targets[i].addEventListener("dragenter", handleDragEnterLeave);
+                targets[i].addEventListener("dragleave", handleDragEnterLeave);
+            }
         </script>
             
     </body>
