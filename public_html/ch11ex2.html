@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ch11 ex2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="" name="form1">
+            <input type="button" name="myButton" value="Button clicked 0 times" />
+            <input type="button" name="myButton1" value="3 clicks left" />            
+        </form>
+        
+        
+        
+        <script>
+            var myButton = document.form1.myButton;
+            var numberOfClicks = 0;
+            
+            var myButton1 = document.form1.myButton1;
+            var clicksLeft = 3;
+                                  
+            function myButtonClick() {
+                numberOfClicks++;
+                myButton.value = "Button clicked " + numberOfClicks + " times";
+                if (numberOfClicks > 3) {
+                    myButton.value = "Ok STAHPP!";
+                    myButton.removeEventListener("click", myButtonClick);
+                }
+            }
+            
+            function myButtonClick1() {
+                clicksLeft--;
+                myButton1.value = clicksLeft + " clicks left";
+                if (clicksLeft == 0) {
+                    myButton1.value = "You're Done!";
+                    myButton1.removeEventListener("click",myButtonClick1);
+                }
+            }
+            
+            myButton.addEventListener("click", myButtonClick);
+            myButton1.addEventListener("click", myButtonClick1);
+           
+            
+        </script>
+    </body>
+</html>

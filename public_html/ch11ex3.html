@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Ch11 Ex3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="" name="form1">
+            <input type="button" name="myButton" value="Mouse goes up" draggable="false" />
+        </form>
+        
+        <script>
+            var myButton = document.form1.myButton;
+            
+            function myButtonMouseUp() {
+                myButton.value = "Mouse Goes Up";
+            }
+            
+            function myButtonMouseDown() {
+                myButton.value = "Mouse Goes Down";
+            }
+            
+            myButton.addEventListener("mouseup", myButtonMouseUp);
+            myButton.addEventListener("mousedown", myButtonMouseDown);
+        </script>
+    </body>
+</html>
