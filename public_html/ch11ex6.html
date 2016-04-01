@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ch11 ex6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="" name="form1">
+            <p>
+                Tick all of the components you want included on your computer
+            </p>
+            <p>
+                <label for="ChkDVD">DVD-ROM</label>
+                <input type="checkbox" id="chkDVD" name="chkDVD" value="DVD-ROM" />
+            </p>
+            <p>
+                <label for="chkBluRay">Blu-Ray</label>
+                <input type="checkbox" id="chkBluRay" name="chkBluRay"
+                       value="Blu-ray"/>                
+            </p>
+            <p>
+                <label for="chkSSD">SSD Boot Drive</label>
+                <input type="checkbox" id="SSD" name="SSD"
+                       value="SSD Boot Drive"/>                
+            </p>
+            <p>
+                Select the processor speed you require
+            </p>
+            <p>
+                <input type="radio" name="radCpuSpeed"  value="3.2 ghz" />
+                <label>3.2 GHz</label>
+                
+                <input type="radio" name="radCpuSpeed" value="3.5 ghz" />
+                <label>3.5 GHz</label>
+                                
+                <input type="radio" name="radCpuSpeed" value="3.7 ghz" />
+                <label>3.7 GHz</label>
+                
+                <input type="radio" name="radCpuSpeed" checked="checked" value="4.0 ghz" />
+                <label>4.0 GHz</label>
+                
+                <input type="radio" name="radCpuSpeed" value="4.2 ghz" />
+                <label>4.2 GHz</label>
+                                
+            </p>
+            
+            <input type="button" value="Check form" name="btnCheck" />
+            <input type="text" name="resultsBox" />
+            
+        </form>
+        
+        <script>
+            var myForm = document.form1;
+            
+            function getSelectedSpeedValue() {
+                var radios = myForm.radCpuSpeed;
+                
+                for (var index = 0; index < radios.length; index++) {
+                    if (radios[index].checked) {
+                        return radios[index].value;
+                    }
+                }
+                
+                return "";
+            }
+            
+            function findIndexOfSpeed(radio) {
+                var radios = myForm.radCpuSpeed;
+                
+                for (var index = 0; index < radios.length; index ++) {
+                    if (radios[index] == radio) {
+                        return index;
+                    }
+                }
+                return -1;
+            }
+            
+            function radCpuSpeedClick(e) {
+                var radIndex = findIndexOfSpeed(e.target);
+                
+                if (radIndex == 1) {
+                    e.preventDefault();
+                    myForm.resultsBox.value=radIndex;
+                    alert("Sorry that processor speed is currently unavailable");
+                    
+                    // to fix and issue with IE
+                    myForm.radCpuSpeed[0].checked = true;
+                } else {
+                    myForm.resultsBox.value=radIndex;
+                }
+            }
+            
+            function btnCheckClick() {
+                var numberOfControls = myForm.length;
+                var compSpec = "Your chosen processor speed is ";
+                compSpec = compSpec + getSelectedSpeedValue();
+                compSpec = compSpec + "\nWith the following additional components:\n";
+                
+                for (var index = 0; index < numberOfControls; index++) {
+                    var element = myForm[index];
+                    if (element.type == "checkbox") {
+                        if (element.checked) {
+                            compSpec = compSpec + element.value + "\n";
+                        }
+                    }
+                }
+                                
+                alert(compSpec);
+            }
+            
+            for (var index = 0; index < myForm.radCpuSpeed.length; index++) {
+                myForm.radCpuSpeed[index].addEventListener("click", radCpuSpeedClick);
+            }
+            
+            myForm.btnCheck.addEventListener("click", btnCheckClick);
+            
+        </script>
+        
+    </body>
+</html>
