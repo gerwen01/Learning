@@ -35,7 +35,7 @@ and open the template in the editor.
         <script>
             var theForm = document.theForm;
             
-            function btnRemoveWedClick() {
+            /*function btnRemoveWedClick() {
                 var options = theForm.theDay.options;
                 
                 if (options[2].text == "Wednesday") {
@@ -43,9 +43,19 @@ and open the template in the editor.
                 } else {
                     alert("There is no Wednesday here!");
                 }
+            }*/
+    
+            function btnRemoveWedClick() {
+                var days = theForm.theDay;
+                
+                if (days.options[2].text == "Wednesday") {
+                    days.remove(2);
+                } else {
+                    alert("No Wed to remove!");
+                }
             }
             
-            function btnAddWedClick() {
+            /*function btnAddWedClick() {
                 var options = theForm.theDay.options;
                 
                 if (options[2].text != "Wednesday") {
@@ -65,7 +75,27 @@ and open the template in the editor.
                 } else {
                     alert("Do you want to have TWO wednesdays?");
                 }
+            }*/
+    
+            function btnAddWedClick() {
+                var days = theForm.theDay;
+                var options = days.options;
+                
+                if (options[2].text != "Wednesday") {
+                    var option = new Option("Wednesday", 2);
+                    var thursdayOption = options[2];
+                    
+                    try {
+                        day.add(option, thursdayOption);
+                    }
+                    catch (error) {
+                        days.add(option, 2);
+                    }
+                } else {
+                    alert ("You want TWO Wednesdays?");
+                }
             }
+            
             // added by ger as experiment 
             function btnRecOptClick() {
                 var options = theForm.theDay.options;
@@ -73,7 +103,7 @@ and open the template in the editor.
                 
                 for (var index = 0; index < options.length; index++) {
                     if (options[index].selected) {
-                        showSelection.value = options[index].text;//options[index].value;
+                        showSelection.value = options[index].text;
                     }
                 }
             }
